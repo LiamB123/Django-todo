@@ -36,7 +36,6 @@ class TestViews(TestCase):
         item = Item(name="Create a Test")
         item.save()
         id = item.id
-
         response = self.client.post("/edit/{0}".format(id), {"name": "A different name"})
         item = get_object_or_404(Item, pk=id)
 
@@ -46,8 +45,6 @@ class TestViews(TestCase):
         item = Item(name="Create a Test")
         item.save()
         id = item.id
-
         response = self.client.post("/toggle/{0}".format(id))
-
         item = get_object_or_404(Item, pk=id)
         self.assertEqual(item.done, True)
